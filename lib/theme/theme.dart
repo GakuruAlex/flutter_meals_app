@@ -23,6 +23,11 @@ final onPrimaryColorBodyText = GoogleFonts.dmSans(
   fontStyle: FontStyle.normal,
 );
 
+final secondaryColorScheme = ColorScheme.fromSeed(
+  seedColor: secondaryColor,
+  brightness: Brightness.light,
+);
+
 final themeData = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: primaryColor,
