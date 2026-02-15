@@ -1,49 +1,90 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meals_app/models/meal.dart';
-import 'package:flutter_meals_app/theme/theme.dart';
+import 'package:flutter_meals_app/widgets/meal_item_trait.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MealCard extends StatelessWidget {
   const MealCard({super.key, required this.meal});
 
   final Meal meal;
+  String get complexityText {
+    return meal.complexity.name[0].toUpperCase() +
+        meal.complexity.name.substring(1);
+  }
+
+  String get affordabilityText {
+    return meal.affordability.name[0].toUpperCase() +
+        meal.affordability.name.substring(1);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 400,
-      height: 400,
-      child: Card(
-        margin: EdgeInsets.all(10),
-        child: Column(
-          spacing: 8,
+    return Card(
+      margin: EdgeInsets.all(8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(16),
+      ),
+      clipBehavior: Clip.hardEdge,
+      elevation: 3,
+      child: InkWell(
+        onTap: () {},
+        child: Stack(
           children: [
-            Text(
-              meal.title,
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: Theme.of(context).primaryColorLight,
-              ),
+            FadeInImage(
+              placeholder: MemoryImage(kTransparentImage),
+              image: NetworkImage(meal.imageUrl),
+              fit: BoxFit.cover,
+              height: 250,
+              width: double.infinity,
             ),
-            Image.network(
-              meal.imageUrl,
-              errorBuilder: (context, error, stackTrace) => Expanded(
-                child: Row(
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Container(
+                color: Colors.black54,
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 44),
+                child: Column(
                   children: [
-                    Icon(
-                      Icons.error,
-                      color: accentColor,
-                    ),
-                    Expanded(
-                      child: Text(
-                        error.toString(),
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
+                    Text(
+                      meal.title,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        MealItemTrait(
+                          label: '${meal.duration} min',
+                          icon: Icons.schedule,
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        MealItemTrait(label: complexityText, icon: Icons.work),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        MealItemTrait(
+                          label: affordabilityText,
+                          icon: Icons.attach_money,
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-            Expanded(child: Row()),
           ],
         ),
       ),

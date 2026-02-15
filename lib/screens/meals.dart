@@ -21,7 +21,12 @@ class MealsScreen extends StatelessWidget {
       content = Center(
         child: Text(
           "No Meals yet",
-          style: Theme.of(context).textTheme.bodyMedium,
+          style:
+              Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
         ),
       );
     }
