@@ -3,8 +3,8 @@ import 'package:flutter_meals_app/models/meal.dart';
 import 'package:flutter_meals_app/widgets/meal_card.dart';
 
 class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key, required this.meals, required this.title});
-  final String title;
+  const MealsScreen({super.key, required this.meals, this.title});
+  final String? title;
   final List<Meal> meals;
 
   @override
@@ -30,9 +30,11 @@ class MealsScreen extends StatelessWidget {
         ),
       );
     }
-
+    if (title == null) {
+      return content;
+    }
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title!)),
       body: content,
     );
   }
