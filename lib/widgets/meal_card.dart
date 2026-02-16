@@ -3,7 +3,6 @@ import 'package:flutter_meals_app/models/meal.dart';
 import 'package:flutter_meals_app/screens/meal_details_screen.dart';
 import 'package:flutter_meals_app/widgets/meal_image.dart';
 import 'package:flutter_meals_app/widgets/meal_item_trait.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class MealCard extends StatelessWidget {
   const MealCard({super.key, required this.meal});
