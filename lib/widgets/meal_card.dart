@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meals_app/models/meal.dart';
 import 'package:flutter_meals_app/screens/meal_details_screen.dart';
+import 'package:flutter_meals_app/widgets/meal_image.dart';
 import 'package:flutter_meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -43,13 +44,7 @@ class MealCard extends StatelessWidget {
         },
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              height: 250,
-              width: double.infinity,
-            ),
+            MealImage(meal: meal),
             Positioned(
               left: 0,
               right: 0,
