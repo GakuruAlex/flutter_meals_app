@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meals_app/screens/tabs_screen.dart';
 import 'package:flutter_meals_app/theme/theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
