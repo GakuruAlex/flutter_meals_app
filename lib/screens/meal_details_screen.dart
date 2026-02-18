@@ -16,6 +16,12 @@ class MealDetailsScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             pinned: true,
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.star_border_outlined),
+              ),
+            ],
 
             title: Text(meal.title, style: TextStyle(color: textIconColor)),
           ),
