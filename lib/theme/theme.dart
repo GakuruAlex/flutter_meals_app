@@ -7,7 +7,7 @@ const textIconColor = Color.fromARGB(255, 246, 247, 248);
 
 const secondaryColor = Color.fromARGB(255, 32, 164, 243);
 
-const accentColor = Color.fromARGB(255, 202, 60, 37);
+const accentColor = Color.fromARGB(255, 247, 202, 2);
 
 const primaryColor = Color.fromARGB(230, 20, 20, 20);
 
