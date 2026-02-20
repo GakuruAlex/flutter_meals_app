@@ -42,9 +42,19 @@ class MealDetailsScreen extends ConsumerWidget {
                     ),
                   );
                 },
-                icon: Icon(
-                  Icons.star,
-                  color: isMealAFavorite ? accentColor : textIconColor,
+                icon: AnimatedSwitcher(
+                  duration: Duration(milliseconds: 300),
+                  transitionBuilder: (child, animation) {
+                    return RotationTransition(
+                      turns: Tween(begin: 0.9, end: 1.0).animate(animation),
+                      child: child,
+                    );
+                  },
+                  child: Icon(
+                    Icons.star,
+                    color: isMealAFavorite ? accentColor : textIconColor,
+                    key: ValueKey(isMealAFavorite),
+                  ),
                 ),
               ),
             ],
@@ -55,7 +65,7 @@ class MealDetailsScreen extends ConsumerWidget {
             child: MealCard(meal: meal),
           ),
           SliverToBoxAdapter(
-            child:  MealInstructions(
+            child: MealInstructions(
               data: meal.ingredients,
               title: "Ingredients",
             ),
