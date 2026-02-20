@@ -35,14 +35,14 @@ class MealInstructions extends StatelessWidget {
               itemCount: data.length,
               itemBuilder: (context, int index) {
                 return ListTile(
-                  title: Row(
+                  title:  Row(
                     children: [
                       Text('${index + 1}'),
                       SizedBox(
                         width: 10,
                       ),
                       SizedBox(
-                        width: 310,
+                        width: 270,
                         child: Text(
                           data[index],
                           style: TextStyle(color: textIconColor),
