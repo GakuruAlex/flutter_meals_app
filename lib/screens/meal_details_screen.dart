@@ -55,7 +55,7 @@ class MealDetailsScreen extends ConsumerWidget {
             child: MealCard(meal: meal),
           ),
           SliverToBoxAdapter(
-            child: MealInstructions(
+            child:  MealInstructions(
               data: meal.ingredients,
               title: "Ingredients",
             ),
